@@ -1,62 +1,44 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Img from "gatsby-image"
-import { useStaticQuery, graphql } from 'gatsby';
-import BackgroundImage from 'gatsby-background-image'
+import HamburgerMenuContainer from "./menu";
+import styled from 'styled-components';
 
+const HeaderContainer = styled.div`
+  background: #fff;
+`;
+
+const BannerContainer = styled.div`
+  margin: 0 auto;
+  max-width: 960;
+  padding: 2rem 1rem;
+  justify-content: center;
+  background: #F9DED5;
+  display: flex;
+`;
 
 const Header = () => {
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      file(relativePath: { eq: "wiktoria-logo-background.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
   return (
-    <header
-      style={{
-        background: `#fff`,
-        // marginBottom: `10vh`,
-      }}
-    >
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0rem 1.0875rem`,
-          
-        }}
-      >
-        <BackgroundImage
-          fluid={data.file.childImageSharp.fluid}
-          alt="A corgi smiling happily"
-          style={{ display: 'flex', justifyContent: 'center', width: '100%', backgroundSize: 'cover', padding: '2rem 0rem' }}
+    <HeaderContainer>
+      <HamburgerMenuContainer isOpen={false} />
+      <BannerContainer>
+        <Link
+          to="/"
+          style={{
+            color: `#626262`,
+            textDecoration: `none`,
+            fontFamily: 'Raleway',
+            fontWeight: '300',
+            fontSize: '1.5rem',
+            textAlign: 'center',
+            
+          }}
         >
-          <Link
-            to="/"
-            style={{
-              color: `#626262`,
-              textDecoration: `none`,
-              fontFamily: 'Raleway',
-              fontWeight: '300',
-              fontSize: '1.5rem',
-              textAlign: 'center',
-              // zIndex: 10,
-              // position: 'relative'
-            }}
-          >
-            Wiktoria Grzywa
-            <p style={{ fontSize: '1rem' }}>Stylizacje paznokci</p>
-          </Link>
-        </BackgroundImage>
-      </div>
-    </header>
+          Wiktoria Grzywa
+          <p style={{ fontSize: '1rem', marginBottom: 0 }}>Stylizacje paznokci</p>
+        </Link>
+      </BannerContainer>
+    </HeaderContainer>
   )
 }
 Header.propTypes = {

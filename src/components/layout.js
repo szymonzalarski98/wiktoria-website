@@ -34,11 +34,11 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
+        {/* <footer>
           © {new Date().getFullYear()}, Created with ❤️ by
           {` `}
           <a href="https://www.gatsbyjs.org">SzymonZalarski</a>
-        </footer>
+        </footer> */}
       </div>
     </>
   )
